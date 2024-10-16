@@ -1,0 +1,243 @@
+
+admin@DESKTOP-6550QNP MINGW64 ~ (target-branch)
+$ mkdir RAJ28
+
+admin@DESKTOP-6550QNP MINGW64 ~ (target-branch)
+$ cd RAJ28
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (target-branch)
+$ git init
+Initialized empty Git repository in C:/Users/admin/RAJ28/.git/
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ touch exp1.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ notepad exp1.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ git add exp1.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ git commit -m "cherrypicking 1 commit"
+[master (root-commit) 29ed03c] cherrypicking 1 commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 exp1.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ touch exp2.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ notepad exp2.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ git add exp2.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ git commit -m "cherrypicking 2 commit"
+[master 75d4799] cherrypicking 2 commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 exp2.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ touch exp3.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ notepad exp3.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ git add exp3.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ git commit -m "cherrypicking 3 commit"
+[master dc6aa27] cherrypicking 3 commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 exp3.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ touch exp4.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ notepad exp4.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ git add exp4.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ git commit -m "cherrypicking 4 commit"
+[master 3508a49] cherrypicking 4 commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 exp4.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ ls
+exp1.txt  exp2.txt  exp3.txt  exp4.txt
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ git log
+commit 3508a49cb43792efaf43321f06ff8d009eea8329 (HEAD -> master)
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:18:30 2024 +0530
+
+    cherrypicking 4 commit
+
+commit dc6aa271f9ca8a4008cae7480e98696cccc1df06
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:17:57 2024 +0530
+
+    cherrypicking 3 commit
+
+commit 75d47997e32a84514e2ec828ba5ea9e7ac60d2a2
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:17:10 2024 +0530
+
+    cherrypicking 2 commit
+
+commit 29ed03c8aba2f516fc3f8e6f48abdb5d1bf14f16
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:16:07 2024 +0530
+
+    cherrypicking 1 commit
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master)
+$ git cherry-pick 3508a49cb43792efaf43321f06ff8d009eea8329 29ed03c8aba2f516fc3f8e6f48abdb5d1bf14f16
+The previous cherry-pick is now empty, possibly due to conflict resolution.
+If you wish to commit it anyway, use:
+
+    git commit --allow-empty
+
+Otherwise, please use 'git cherry-pick --skip'
+On branch master
+You are currently cherry-picking commit 3508a49.
+  (all conflicts fixed: run "git cherry-pick --continue")
+  (use "git cherry-pick --skip" to skip this patch)
+  (use "git cherry-pick --abort" to cancel the cherry-pick operation)
+
+nothing to commit, working tree clean
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (master|CHERRY-PICKING)
+$ git checkout -b "new-branch"
+Switched to a new branch 'new-branch'
+warning: cancelling a cherry picking in progress
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (new-branch|CHERRY-PICKING)
+$ git cherry-pick 3508a49cb43792efaf43321f06ff8d009eea8329 29ed03c8aba2f516fc3f8e6f48abdb5d1bf14f16
+error: cherry-pick is already in progress
+hint: try "git cherry-pick (--continue | --abort | --quit)"
+fatal: cherry-pick failed
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (new-branch|CHERRY-PICKING)
+$ git status
+On branch new-branch
+Cherry-pick currently in progress.
+  (run "git cherry-pick --continue" to continue)
+  (use "git cherry-pick --skip" to skip this patch)
+  (use "git cherry-pick --abort" to cancel the cherry-pick operation)
+
+nothing to commit, working tree clean
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (new-branch|CHERRY-PICKING)
+$ git show 29ed03c8aba2f516fc3f8e6f48abdb5d1bf14f16
+commit 29ed03c8aba2f516fc3f8e6f48abdb5d1bf14f16
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:16:07 2024 +0530
+
+    cherrypicking 1 commit
+
+diff --git a/exp1.txt b/exp1.txt
+new file mode 100644
+index 0000000..3d49e50
+--- /dev/null
++++ b/exp1.txt
+@@ -0,0 +1 @@
++This is my 1st Cherrypicking
+\ No newline at end of file
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (new-branch|CHERRY-PICKING)
+$ git show 75d47997e32a84514e2ec828ba5ea9e7ac60d2a2
+commit 75d47997e32a84514e2ec828ba5ea9e7ac60d2a2
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:17:10 2024 +0530
+
+    cherrypicking 2 commit
+
+diff --git a/exp2.txt b/exp2.txt
+new file mode 100644
+index 0000000..465c72a
+--- /dev/null
++++ b/exp2.txt
+@@ -0,0 +1 @@
++This is my 2nd cherrypicking commit
+\ No newline at end of file
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (new-branch|CHERRY-PICKING)
+$ git log -n 1 --pretty=format:"%h - %an, %ar : %s" dc6aa271f9ca8a4008cae7480e98696cccc1df06
+dc6aa27 - MR-BABY-R, 33 minutes ago : cherrypicking 3 commit
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (new-branch|CHERRY-PICKING)
+$ dc6aa271f9ca8a4008cae7480e98696cccc1df06dc6aa271f9ca8a4008cae7480e98696cccc1df06dc6aa271f9ca8a4008cae7480e98696cccc1df06dc6aa271f9ca8a4008cae7480e98696cccc1df06
+bash: dc6aa271f9ca8a4008cae7480e98696cccc1df06dc6aa271f9ca8a4008cae7480e98696cccc1df06dc6aa271f9ca8a4008cae7480e98696cccc1df06dc6aa271f9ca8a4008cae7480e98696cccc1df06: command not found
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (new-branch|CHERRY-PICKING)
+$ git log
+commit 3508a49cb43792efaf43321f06ff8d009eea8329 (HEAD -> new-branch, master)
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:18:30 2024 +0530
+
+    cherrypicking 4 commit
+
+commit dc6aa271f9ca8a4008cae7480e98696cccc1df06
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:17:57 2024 +0530
+
+    cherrypicking 3 commit
+
+commit 75d47997e32a84514e2ec828ba5ea9e7ac60d2a2
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:17:10 2024 +0530
+
+    cherrypicking 2 commit
+
+commit 29ed03c8aba2f516fc3f8e6f48abdb5d1bf14f16
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:16:07 2024 +0530
+
+    cherrypicking 1 commit
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (new-branch|CHERRY-PICKING)
+$ git log -n 3
+commit 3508a49cb43792efaf43321f06ff8d009eea8329 (HEAD -> new-branch, master)
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:18:30 2024 +0530
+
+    cherrypicking 4 commit
+
+commit dc6aa271f9ca8a4008cae7480e98696cccc1df06
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:17:57 2024 +0530
+
+    cherrypicking 3 commit
+
+commit 75d47997e32a84514e2ec828ba5ea9e7ac60d2a2
+Author: MR-BABY-R <lsrajes0282gmail.com>
+Date:   Wed Oct 16 12:17:10 2024 +0530
+
+    cherrypicking 2 commit
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (new-branch|CHERRY-PICKING)
+$ git log -n 4 --oneline
+3508a49 (HEAD -> new-branch, master) cherrypicking 4 commit
+dc6aa27 cherrypicking 3 commit
+75d4799 cherrypicking 2 commit
+29ed03c cherrypicking 1 commit
+
+admin@DESKTOP-6550QNP MINGW64 ~/RAJ28 (new-branch|CHERRY-PICKING)
+$
